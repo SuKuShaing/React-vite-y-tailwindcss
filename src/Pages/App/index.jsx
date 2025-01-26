@@ -1,19 +1,33 @@
-import Home from '../Home'
-import MyAccount from '../MyAccount'
-import MyOrder from '../MyOrder'
-import MyOrders from '../MyOrders'
-import NotFound from '../NotFound'
-import SignIn from '../SignIn'
-import './App.css'
+import { useRoutes, BrowserRouter } from "react-router-dom";
 
-function App() {
+import Home from "../Home";
+import MyAccount from "../MyAccount";
+import MyOrder from "../MyOrder";
+import MyOrders from "../MyOrders";
+import NotFound from "../NotFound";
+import SignIn from "../SignIn";
+import "./App.css";
 
-  return (
-    <div className="bg-red-400">
-      Hola Mundo bebé, soy App
-      <Home />
-    </div>
-  )
+const AppRoutes = () => {
+	let routes = useRoutes([
+		{path: "/", element: <Home />},
+		{path: "/my-account", element: <MyAccount />},
+        {path: "/my-order", element: <MyOrder />},
+        {path: "/my-orders", element: <MyOrders />},
+        {path: "/sign-in", element: <SignIn />},
+        {path: "/*", element: <NotFound />},
+	]);
+
+    return routes;
+};
+
+const App = () => {
+	return (
+        // con encapsular el componente AppRoutes en el componente BrowserRouter, se habilita el uso de rutas en la aplicación
+        <BrowserRouter>
+            <AppRoutes />
+        </BrowserRouter>
+	);
 }
 
-export default App
+export default App;
