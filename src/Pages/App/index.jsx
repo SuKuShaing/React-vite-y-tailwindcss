@@ -6,6 +6,8 @@ import MyOrder from "../MyOrder";
 import MyOrders from "../MyOrders";
 import NotFound from "../NotFound";
 import SignIn from "../SignIn";
+import Navbar from "../../Components/Navbar";
+
 import "./App.css";
 
 const AppRoutes = () => {
@@ -26,6 +28,7 @@ const App = () => {
         // con encapsular el componente AppRoutes en el componente BrowserRouter, se habilita el uso de rutas en la aplicación
         <BrowserRouter>
             <AppRoutes />
+            <Navbar />
         </BrowserRouter>
 	);
 }
