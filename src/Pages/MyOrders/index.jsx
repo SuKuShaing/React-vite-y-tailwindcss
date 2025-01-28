@@ -1,11 +1,12 @@
+import Layout from "../../Components/Layout"
 // import './App.css'
 
 function MyOrders() {
 
     return (
-        <div className="bg-red-400">
+        <Layout>
             Hola Mundo bebé, soy MyOrders
-        </div>
+        </Layout>
     )
 }
 

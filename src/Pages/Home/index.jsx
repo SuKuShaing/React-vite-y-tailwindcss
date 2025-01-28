@@ -1,11 +1,11 @@
+import Layout from "../../Components/Layout"
 // import './App.css'
 
 function Home() {
-
     return (
-        <div className="bg-red-400">
+        <Layout>
             Hola Mundo bebé, soy el Home
-        </div>
+        </Layout>
     )
 }
 

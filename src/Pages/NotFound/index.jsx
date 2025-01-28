@@ -1,11 +1,13 @@
+import Layout from "../../Components/Layout"
 // import './App.css'
+
 
 function NotFound() {
 
     return (
-        <div className="bg-red-400">
+        <Layout>
             Hola Mundo bebé, soy NotFound
-        </div>
+        </Layout>
     )
 }
 

@@ -27,8 +27,8 @@ const App = () => {
 	return (
         // con encapsular el componente AppRoutes en el componente BrowserRouter, se habilita el uso de rutas en la aplicación
         <BrowserRouter>
-            <AppRoutes />
             <Navbar />
+            <AppRoutes />
         </BrowserRouter>
 	);
 }
