@@ -1,4 +1,9 @@
+import { useContext } from "react";
+import { ShopppingCartContext } from "../../Context";
+
 const Card = (data) => {
+	const context = useContext(ShopppingCartContext);
+
 	return (
 		<div className="bg-white cursor-pointer w-56 h-60 rounded-lg">
 			<figure className="relative mb-2 w-full h-4/5">
@@ -10,7 +15,11 @@ const Card = (data) => {
 					alt={data.data.title}
                     className="size-full object-cover rounded-lg"
 				/>
-				<div className="absolute top-0 right-0 flex justify-center items-center bg-white size-6 rounded-full m-2 px-2 py-1">
+				<div 
+					className="absolute top-0 right-0 flex justify-center items-center bg-white size-6 rounded-full m-2 px-2 py-1"
+					onClick={() => context.setCount(context.count + 1)}
+					// te traes el contexto del provider con "context", usa el método "setCount", context.count es el valor actual de "count" y le sumas 1
+				>
 					+
 				</div>
 			</figure>
