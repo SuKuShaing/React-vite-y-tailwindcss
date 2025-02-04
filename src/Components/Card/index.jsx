@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { PlusIcon } from "@heroicons/react/24/solid";
 import { ShopppingCartContext } from "../../Context";
 
 const Card = (data) => {
@@ -13,14 +14,14 @@ const Card = (data) => {
 				<img
 					src={data.data.images[0]}
 					alt={data.data.title}
-                    className="size-full object-cover rounded-lg"
+					className="size-full object-cover rounded-lg"
 				/>
-				<div 
-					className="absolute top-0 right-0 flex justify-center items-center bg-white size-6 rounded-full m-2 px-2 py-1"
+				<div
+					className="absolute top-0 right-0 flex justify-center items-center bg-white size-6 rounded-full m-2 hover:bg-white/80 transition-all"
 					onClick={() => context.setCount(context.count + 1)}
 					// te traes el contexto del provider con "context", usa el método "setCount", context.count es el valor actual de "count" y le sumas 1
 				>
-					+
+					<PlusIcon className="size-3.5"/>
 				</div>
 			</figure>
 			<p className="flex justify-between">

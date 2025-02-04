@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Card from "../../Components/Card";
 import Layout from "../../Components/Layout";
+import ProductDetails from "../../Components/ProductDetails";
 // import './App.css'
 
 function Home() {
@@ -23,6 +24,7 @@ function Home() {
 					<Card key={item.id} data={item} />
 				))}
 			</div>
+			<ProductDetails />
 		</Layout>
 	);
 }
