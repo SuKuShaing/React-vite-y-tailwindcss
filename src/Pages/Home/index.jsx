@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import Card from "../../Components/Card";
 import Layout from "../../Components/Layout";
 import ProductDetails from "../../Components/ProductDetails";
-// import './App.css'
 
 function Home() {
 	const [items, setItems] = useState(null);
@@ -12,7 +11,6 @@ function Home() {
 			.then((response) => response.json())
 			.then((data) => {
 				setItems(data);
-				console.log(data);
 			});
 	}, []);
 
