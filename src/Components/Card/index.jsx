@@ -10,6 +10,14 @@ const Card = (data) => {
 		context.setProductToShow(productDetail);	
 	}
 
+	const addProductsToCart = (productData) => {
+		context.setCount(context.count + 1);
+		context.setCartProducts([...context.cartProducts, productData]);
+		context.openChechoutSideMenu();
+		console.log('cart: ', context.cartProducts);
+		
+	}
+
 	return (
 		<div 
 			className="bg-white cursor-pointer w-56 h-60 rounded-lg"
@@ -26,7 +34,7 @@ const Card = (data) => {
 				/>
 				<div
 					className="absolute top-0 right-0 flex justify-center items-center bg-white size-6 rounded-full m-2 hover:bg-white/80 transition-all"
-					onClick={() => context.setCount(context.count + 1)}
+					onClick={() => addProductsToCart(data.data)}
 					// te traes el contexto del provider con "context", usa el método "setCount", context.count es el valor actual de "count" y le sumas 1
 				>
 					<PlusIcon className="size-3.5"/>
