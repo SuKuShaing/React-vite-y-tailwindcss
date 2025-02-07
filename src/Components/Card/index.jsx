@@ -6,15 +6,18 @@ const Card = (data) => {
 	const context = useContext(ShopppingCartContext);
 
 	const showProduct = (productDetail) => {
+		context.closeChechoutSideMenu();
 		context.openProductDetail();
 		context.setProductToShow(productDetail);	
 	}
 
-	const addProductsToCart = (productData) => {
-		context.setCount(context.count + 1);
+	const addProductsToCart = (event, productData) => {
+		context.closeProductDetail();
 		context.setCartProducts([...context.cartProducts, productData]);
+		context.setCount(context.count + 1);
 		context.openChechoutSideMenu();
 		console.log('cart: ', context.cartProducts);
+		event.stopPropagation(); // evita que el evento se propague al padre, es decir, que solo se agregue al carrito y que no se abra el modal de detalle del producto
 		
 	}
 
@@ -34,7 +37,7 @@ const Card = (data) => {
 				/>
 				<div
 					className="absolute top-0 right-0 flex justify-center items-center bg-white size-6 rounded-full m-2 hover:bg-white/80 transition-all"
-					onClick={() => addProductsToCart(data.data)}
+					onClick={(event) => addProductsToCart(event, data.data)}
 					// te traes el contexto del provider con "context", usa el método "setCount", context.count es el valor actual de "count" y le sumas 1
 				>
 					<PlusIcon className="size-3.5"/>
