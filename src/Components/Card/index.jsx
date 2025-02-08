@@ -13,10 +13,18 @@ const Card = (data) => {
 
 	const addProductsToCart = (event, productData) => {
 		context.closeProductDetail();
-		context.setCartProducts([...context.cartProducts, productData]);
-		context.setCount(context.count + 1);
+		// verifica si el producto ya está en el carrito
+		const productIndex = context.cartProducts.findIndex(product => product.id === productData.id);
+		if (productIndex !== -1) {
+			context.cartProducts[productIndex].quantity += 1;
+			context.setCartProducts([...context.cartProducts]);
+		}
+		else {
+			context.setCartProducts([...context.cartProducts, {...productData, quantity: 1}]);
+		}
+		// context.setCartProducts([...context.cartProducts, productData]);
+		context.setCount(context.count + 1); // incrementa el contador global de productos
 		context.openChechoutSideMenu();
-		console.log('cart: ', context.cartProducts);
 		event.stopPropagation(); // evita que el evento se propague al padre, es decir, que solo se agregue al carrito y que no se abra el modal de detalle del producto
 		
 	}
