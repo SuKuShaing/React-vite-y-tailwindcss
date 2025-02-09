@@ -20,13 +20,11 @@ const CheckoutSideMenu = () => {
 				<div className="flex justify-between gap-2 items-center">
 					<p className="font-medium text-xl">
 						Total: $
-						{
-                        context.cartProducts.length > 0 ?
-                        context.cartProducts.reduce((acc, product) => {
-							return acc + product.price * product.quantity;
-						}, 0) 
-                        : 0
-                        }
+						{context.cartProducts.length > 0
+                            ? context.cartProducts.reduce((acc, product) => {
+                                    return acc + product.price * product.quantity;
+                                }, 0)
+							: 0}
 					</p>
 					<div
 						className="cursor-pointer"
@@ -36,7 +34,7 @@ const CheckoutSideMenu = () => {
 					</div>
 				</div>
 			</div>
-			<div className="flex flex-col gap-2 scrollable-cards">
+			<div className="flex flex-col gap-2 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300">
 				{context.cartProducts.map((product, index) => {
 					return (
 						<OrderCard
