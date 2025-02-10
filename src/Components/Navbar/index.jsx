@@ -93,7 +93,13 @@ const Navbar = () => {
 						Sign In
 					</NavLink>
 				</li>
-				<li className="flex gap-1 items-center"><ShoppingBagIcon className="size-5" /> {context.count}</li>
+				<li 
+					onClick={context.openChechoutSideMenu}
+					className="flex gap-1 items-center hover:bg-gray-200 rounded-lg cursor-pointer"
+				>
+					<ShoppingBagIcon className="size-5" /> 
+					{context.count}
+				</li>
 			</ul>
 		</nav>
 	);
