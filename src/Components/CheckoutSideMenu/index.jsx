@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { ShopppingCartContext } from "../../Context";
 import OrderCard from "../OrderCard";
 import { XMarkIcon } from "@heroicons/react/24/solid";
+import { totalPrice } from "../../utils";
 import "./styles.css";
 
 const CheckoutSideMenu = () => {
@@ -24,11 +25,7 @@ const CheckoutSideMenu = () => {
 				<div className="flex justify-between gap-2 items-center">
 					<p className="font-medium text-xl">
 						Total: $
-						{context.cartProducts.length > 0
-                            ? context.cartProducts.reduce((acc, product) => {
-                                    return acc + product.price * product.quantity;
-                                }, 0)
-							: 0}
+						{totalPrice(context.cartProducts)}
 					</p>
 					<div
 						className="cursor-pointer"
