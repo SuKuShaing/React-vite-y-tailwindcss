@@ -94,7 +94,10 @@ const Navbar = () => {
 					</NavLink>
 				</li>
 				<li 
-					onClick={context.openChechoutSideMenu}
+					onClick={() => {
+						context.closeProductDetail();
+						context.openChechoutSideMenu();
+					}}
 					className="flex gap-1 items-center hover:bg-gray-200 rounded-lg cursor-pointer"
 				>
 					<ShoppingBagIcon className="size-5" /> 
