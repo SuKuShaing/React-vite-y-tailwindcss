@@ -1,7 +1,9 @@
 import { TrashIcon } from "@heroicons/react/24/outline";
 
+// OrderCard component va dentro de CheckoutSideMenu, son los productos que se van a comprar
+
 const OrderCard = (props) => {
-	const { title, imageUrl, price, quantity } = props;
+	const { title, imageUrl, price, quantity, handleDelete, id } = props;
 
 	return (
 		<div className="flex justify-between items-center">
@@ -20,7 +22,10 @@ const OrderCard = (props) => {
 			</div>
 			<div className="flex items-center gap-2">
 				<p className="text-lg font-medium">${quantity * price}</p>
-				<TrashIcon className="h-5 w-5 cursor-pointer" />
+				<TrashIcon 
+					onClick={() => handleDelete(id)}
+					className="h-5 w-5 cursor-pointer" 
+				/>
 			</div>
 		</div>
 	);

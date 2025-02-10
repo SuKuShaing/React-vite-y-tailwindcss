@@ -7,7 +7,11 @@ import "./styles.css";
 const CheckoutSideMenu = () => {
 	const context = useContext(ShopppingCartContext);
 
-	console.log("cart: ", context.cartProducts);
+	// eliminamos un producto del carrito
+	const handleDelete = (id) => {
+		const filteredProducts = context.cartProducts.filter(product => product.id !== id); // retorna los true, y los true son los distintos al id que se le pasa
+		context.setCartProducts(filteredProducts);
+	};
 
 	return (
 		<aside
@@ -43,6 +47,8 @@ const CheckoutSideMenu = () => {
 							imageUrl={product.images}
 							price={product.price}
 							quantity={product.quantity}
+							id={product.id}
+							handleDelete={handleDelete}
 						/>
 					);
 				})}
