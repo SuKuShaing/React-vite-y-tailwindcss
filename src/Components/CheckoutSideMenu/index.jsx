@@ -1,8 +1,9 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { ShopppingCartContext } from "../../Context";
 import OrderCard from "../OrderCard";
-import { XMarkIcon } from "@heroicons/react/24/solid";
 import { totalPrice } from "../../utils";
+import { XMarkIcon } from "@heroicons/react/24/solid";
 import "./styles.css";
 
 const CheckoutSideMenu = () => {
@@ -10,7 +11,9 @@ const CheckoutSideMenu = () => {
 
 	// eliminamos un producto del carrito
 	const handleDelete = (id) => {
-		const filteredProducts = context.cartProducts.filter(product => product.id !== id); // retorna los true, y los true son los distintos al id que se le pasa
+		const filteredProducts = context.cartProducts.filter(
+			(product) => product.id !== id
+		); // retorna los true, y los true son los distintos al id que se le pasa
 		context.setCartProducts(filteredProducts);
 	};
 
@@ -20,8 +23,8 @@ const CheckoutSideMenu = () => {
 			date: new Date().toLocaleDateString(),
 			products: context.cartProducts,
 			totalProducts: context.cartProducts.length,
-			totalPrice: totalPrice(context.cartProducts)
-		}
+			totalPrice: totalPrice(context.cartProducts),
+		};
 
 		context.setOrder([...context.order, orderToAdd]);
 		context.setCartProducts([]);
@@ -37,8 +40,7 @@ const CheckoutSideMenu = () => {
 				<h2 className="font-medium text-xl">My Order</h2>
 				<div className="flex justify-between gap-2 items-center">
 					<p className="font-medium text-xl">
-						Total: $
-						{totalPrice(context.cartProducts)}
+						Total: ${totalPrice(context.cartProducts)}
 					</p>
 					<div
 						className="cursor-pointer"
@@ -63,12 +65,14 @@ const CheckoutSideMenu = () => {
 					);
 				})}
 			</div>
-			<button 
-				onClick={handleCheckout}
-				className="bg-black text-white w-full font-medium py-2 rounded hover:bg-black/80 mb-3 mt-2"
-			>
-				Pagar Checkout
-			</button>
+			<Link to="/my-orders/last">
+				<button
+					onClick={handleCheckout}
+					className="bg-black text-white w-full font-medium py-2 rounded hover:bg-black/80 mb-3 mt-2"
+				>
+					Pagar Checkout
+				</button>
+			</Link>
 		</aside>
 	);
 };

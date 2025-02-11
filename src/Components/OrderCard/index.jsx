@@ -9,7 +9,9 @@ const OrderCard = (props) => {
 	const { title, imageUrl, price, quantity, handleDelete, id } = props;
 
 	const restarUno = (id) => {
-		const productIndex = context.cartProducts.findIndex(product => product.id === id);
+		const productIndex = context.cartProducts.findIndex(
+			(product) => product.id === id
+		);
 		const newCartProducts = [...context.cartProducts];
 		newCartProducts[productIndex].quantity -= 1;
 		if (newCartProducts[productIndex].quantity === 0) {
@@ -21,10 +23,24 @@ const OrderCard = (props) => {
 	};
 
 	const sumarUno = (id) => {
-		const productIndex = context.cartProducts.findIndex(product => product.id === id);
+		const productIndex = context.cartProducts.findIndex(
+			(product) => product.id === id
+		);
 		const newCartProducts = [...context.cartProducts];
 		newCartProducts[productIndex].quantity += 1;
 		context.setCartProducts(newCartProducts);
+	};
+
+	let renderXMarkIcon
+	if (handleDelete) {
+		renderXMarkIcon = (
+			<div
+				onClick={() => handleDelete(id)}
+				className="bg-gray-100 hover:bg-gray-200 rounded-sm cursor-pointer"
+			>
+				<TrashIcon className="m-0.5 size-4" />
+			</div>
+		);
 	}
 
 	return (
@@ -40,28 +56,22 @@ const OrderCard = (props) => {
 				<p className="text-sm font-light">{title}</p>
 				<div className="flex justify-between items-center">
 					<div className="flex justify-between items-center gap-1 w-1/2">
-						<div 
+						<div
 							onClick={() => restarUno(id)}
 							className="bg-gray-100 hover:bg-gray-200 rounded-sm cursor-pointer"
 						>
-							<MinusIcon className="m-0.5 size-4"/>
+							<MinusIcon className="m-0.5 size-4" />
 						</div>
 						<p className="text-sm font-light my-1">{quantity}</p>
 						<div
 							onClick={() => sumarUno(id)}
 							className="bg-gray-100 hover:bg-gray-200 rounded-sm cursor-pointer"
 						>
-							<PlusIcon className="m-0.5 size-4"/>
+							<PlusIcon className="m-0.5 size-4" />
 						</div>
 						<p className="text-sm font-light">x ${price}</p>
 					</div>
-					<div className="flex items-center gap-2">
-						<p className="text-lg font-medium">${quantity * price}</p>
-						<TrashIcon
-							onClick={() => handleDelete(id)}
-							className="h-5 w-5 cursor-pointer text-gray-400"
-						/>
-					</div>
+					{renderXMarkIcon}
 				</div>
 			</div>
 		</div>
