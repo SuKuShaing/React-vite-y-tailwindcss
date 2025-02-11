@@ -14,6 +14,19 @@ const CheckoutSideMenu = () => {
 		context.setCartProducts(filteredProducts);
 	};
 
+	// checkout
+	const handleCheckout = () => {
+		const orderToAdd = {
+			date: new Date().toLocaleDateString(),
+			products: context.cartProducts,
+			totalProducts: context.cartProducts.length,
+			totalPrice: totalPrice(context.cartProducts)
+		}
+
+		context.setOrder([...context.order, orderToAdd]);
+		context.setCartProducts([]);
+	};
+
 	return (
 		<aside
 			className={`${
@@ -35,7 +48,7 @@ const CheckoutSideMenu = () => {
 					</div>
 				</div>
 			</div>
-			<div className="flex flex-col gap-2 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300">
+			<div className="flex flex-col flex-1 gap-2 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300">
 				{context.cartProducts.map((product, index) => {
 					return (
 						<OrderCard
@@ -50,6 +63,12 @@ const CheckoutSideMenu = () => {
 					);
 				})}
 			</div>
+			<button 
+				onClick={handleCheckout}
+				className="bg-black text-white w-full font-medium py-2 rounded hover:bg-black/80 mb-3 mt-2"
+			>
+				Pagar Checkout
+			</button>
 		</aside>
 	);
 };
