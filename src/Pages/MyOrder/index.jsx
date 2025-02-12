@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import { ShopppingCartContext } from "../../Context";
 import OrderCard from "../../Components/OrderCard";
 import Layout from "../../Components/Layout";
+import { Link } from "react-router-dom";
+import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 // import './App.css'
 
 function MyOrder() {
@@ -16,7 +18,12 @@ function MyOrder() {
 
 	return (
 		<Layout>
-			Hola Mundo bebé, soy MyOrder
+            <div className="flex justify-between w-80 items-center mb-5">
+				<Link to={"/my-orders"}>
+					<ChevronLeftIcon className="size-6 text-black cursor-pointer" />
+				</Link>
+				<h1 className="grow text-center">My Order</h1>
+			</div>
 			<div className="flex flex-col flex-1 gap-2 overflow-y-auto [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-gray-100 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-gray-300">
 				{lastOrder?.products?.length > 0 ? (
                     lastOrder.products.map((product, index) => (
