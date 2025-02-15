@@ -19,6 +19,8 @@ const AppRoutes = () => {
 		{ path: "/my-order", element: <MyOrder /> },
 		{ path: "/my-orders", element: <MyOrders /> },
 		{ path: "/my-orders/last", element: <MyOrder /> },
+		{ path: "/my-orders/:id", element: <MyOrder /> },
+		// en el path se puede poner un id, que es un parámetro que se puede pasar a la ruta
 		{ path: "/sign-in", element: <SignIn /> },
 		{ path: "/*", element: <NotFound /> },
 	]);

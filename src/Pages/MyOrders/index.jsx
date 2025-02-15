@@ -8,20 +8,24 @@ import { ChevronLeftIcon } from "@heroicons/react/24/outline";
 
 function MyOrders() {
 	const context = useContext(ShopppingCartContext);
+	// console.log(context.order);
 
 	return (
 		<Layout>
 			<div className="flex justify-between w-80 items-center">
 				<h1 className="grow text-center">My Orders</h1>
 			</div>
-			{context.order.map((order, index) => {
-				<Link key={index} to={`/my-orders/${order.id}`}>
+			{ context.order.length === 0 && <p className="text-center text-gray-500">No hay ordenes que mostrar</p> }
+			{context.order.map((order, index) => (
+				<Link key={index} to={`/my-orders/${index}`}>
 					<OrdersCard
+						date={order.date}
 						totalPrice={order.totalPrice}
 						totalProducts={order.totalProducts}
+						products={order.products}
 					/>
-				</Link>;
-			})}
+				</Link>
+			))}
 		</Layout>
 	);
 }
