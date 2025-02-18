@@ -21,7 +21,6 @@ function MyOrder() {
         index = context.order?.length - 1;
     }
 
-
 	useEffect(() => {
         // cerrar el menú lateral
         context.closeChechoutSideMenu();

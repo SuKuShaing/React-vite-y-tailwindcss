@@ -9,7 +9,7 @@ const OrdersCard = (props) => {
 	// console.log("products: ", products);
 
 	return (
-		<div className="flex flex-col gap-2 rounded border border-black p-2 m-2 w-60">
+		<div className="flex flex-col gap-2 rounded-lg border border-black p-2 m-2 w-60">
             <p className="flex gap-3 items-center">
                 <span>{date}</span>
                 <span>Products: {totalProducts}</span>
