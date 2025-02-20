@@ -22,7 +22,7 @@ function Home() {
 			}
 		} else {
 			return (
-				context.items?.map((item) => (
+				context.filteredItems?.map((item) => (
 					<Card key={item.id} data={item} />
 				))
 			)
