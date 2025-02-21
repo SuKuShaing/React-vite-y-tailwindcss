@@ -107,7 +107,7 @@ const Navbar = () => {
 					className="flex gap-1 items-center hover:bg-gray-200 rounded-lg cursor-pointer"
 				>
 					<ShoppingBagIcon className="size-5" /> 
-					{context.count}
+					{context.cartProducts.length}
 				</li>
 			</ul>
 		</nav>
